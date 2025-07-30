@@ -1,134 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>GVP Studio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GvP Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet" />
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
-
+    * {
+      box-sizing: border-box;
+      margin: 0; padding: 0;
+    }
     body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background-color: #fffdf8; /* Lighter cream */
-      color: #4a2c2a;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fdfaf5;
+      color: #2c2c2c;
+      overflow-x: hidden;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
     }
-    header {
-      background-color: #e6d3b3;
-      color: #4a2c2a;
-      padding: 30px;
+    body.fade-in {
+      opacity: 1;
+    }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
     }
-    header img {
-      max-width: 150px;
-      height: auto;
-      display: block;
-      margin: 0 auto 15px;
+
+    .logo-text {
+      font-size: 48px;
+      font-weight: bold;
+      color: #000;
     }
-    header h1 {
-      font-size: 3em;
-      text-transform: uppercase;
-      margin: 10px 0;
-    }
-    header p {
+
+    .tagline {
       font-family: 'Dancing Script', cursive;
-      font-size: 1.5em;
-      margin-top: 5px;
+      font-size: 28px;
+      color: #8b7b62;
+      margin-top: 10px;
     }
-    section {
-      padding: 20px;
-      max-width: 900px;
-      margin: auto;
-      background-color: #fff8ee;
-      border-radius: 8px;
-      margin-bottom: 20px;
+
+    .hamburger {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      width: 30px;
+      height: 25px;
+      cursor: pointer;
+      z-index: 1001;
     }
-    h2 {
-      color: #5c4033;
+
+    .hamburger div {
+      width: 100%;
+      height: 4px;
+      background-color: #000;
+      margin: 5px 0;
     }
-    ul {
-      list-style: none;
-      padding: 0;
+
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: #e8d9c4;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+      padding-top: 60px;
+      transition: left 0.3s ease-in-out;
+      z-index: 1000;
     }
-    ul li {
-      font-size: 1em; /* Reset to normal font */
-      font-family: Arial, sans-serif;
+
+    .side-menu.open {
+      left: 0;
     }
-    ul li::before {
-      content: "🎬 ";
-    }
-    footer {
-      background-color: #e6d3b3;
-      color: #4a2c2a;
-      padding: 15px;
-      text-align: center;
-    }
-    a {
-      color: #a0522d;
+
+    .side-menu a {
+      display: block;
+      padding: 15px 25px;
+      color: #2c2c2c;
       text-decoration: none;
+      font-weight: 500;
     }
-    a:hover {
-      text-decoration: underline;
-    }
-    .social-icons img {
-      width: 24px;
-      height: 24px;
-      vertical-align: middle;
-      margin-right: 8px;
+
+    .side-menu a:hover {
+      background-color: #f2e8dc;
     }
   </style>
 </head>
 <body>
+  <div class="hamburger" onclick="toggleMenu()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
 
-<header>
-  <h1>GVP STUDIO</h1>
-  <p style="font-family: 'Dancing Script', cursive; font-size: 1.5em;">Capturing Your Special Moments</p>
-</header>
+  <nav class="side-menu" id="sideMenu">
+    <a href="index.html">Home</a>
+    <a href="weddings.html">Weddings</a>
+    <a href="birthdays.html">Birthdays</a>
+    <a href="corporate.html">Corporate Events</a>
+    <a href="cultural.html">Cultural Celebrations</a>
+    <a href="clips.html">Video Clips</a>
+    <a href="socials.html">Socials</a>
+  </nav>
 
-<section>
-  <h2>Our Services</h2>
-  <ul>
-    <li>Wedding Video Filming</li>
-    <li>Photography Studio Sessions</li>
-    <li>Love Story Videos</li>
-    <li>Event Videography (Birthdays, Celebrations, More)</li>
-    <li>Music/Video Clips</li>
-    <li>Banners</li>
-    <li>Photo Albums</li>
-  </ul>
-</section>
+  <div class="hero">
+    <div class="logo-text">GvP Studio</div>
+    <div class="tagline">Capturing Your Special Moments</div>
+  </div>
 
-<section>
-  <h2>Watch Our Work</h2>
-  <p>Follow us for samples and updates:</p>
-  <ul class="social-icons">
-    <li><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Icon"> <a href="https://www.instagram.com/gvp_studio/">@gvp_studio</a></li>
-    <li><img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube Icon"> <a href="https://www.youtube.com/@gayratvideo1587">@gayratvideo1587</a></li>
-  </ul>
-</section>
+<script>
+  document.body.classList.add('fade-in');
 
-<section>
-  <h2>Contact Us</h2>
-  <p>Email: <a href="mailto:nycgvpvideo@gmail.com">nycgvpvideo@gmail.com</a></p>
-  <p>Phone/WhatsApp:</p>
-  <ul>
-    <li><a href="tel:+17248920000">724-892-0000</a></li>
-    <li><a href="tel:+19295590352">929-559-0352</a></li>
-  </ul>
-</section>
+  function toggleMenu() {
+    const menu = document.getElementById('sideMenu');
+    menu.classList.toggle('open');
+  }
 
-<footer>
-  <p>&copy; 2025 GVP Studio - All Rights Reserved</p>
-  <p><a href="https://gvpvideo.com">gvpvideo.com</a></p>
-</footer>
+  document.querySelectorAll('.side-menu a').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const url = link.getAttribute('href');
+      toggleMenu();
 
-<a href="https://wa.me/17248920000"
-   style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-       alt="WhatsApp"
-       style="width: 200px; height: 200px; border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
-</a>
-
-
+      // Fade out then navigate
+      document.body.classList.remove('fade-in');
+      setTimeout(() => {
+        window.location.href = url;
+      }, 400);
+    });
+  });
+</script>
 </body>
 </html>
-
